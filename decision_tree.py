@@ -10,7 +10,7 @@ class DecisionTree:
         self.classification_data = classification_data
         self.attributes = attributes
         self.tree = {}
-        self.fields = {1:"a",2:"b",3:"c", 4:"d", 5:"e"} 
+        self.fields = {1:"account_balance",2:"marital_status",3:"mv_avaiable_asset", 4:"type_of_apartament", 5:"concurrent_credits"} 
 
     def calculate_general_entropy(self, data):
         #por cada valor del nuevo atributo a evaluar se calcula la entropia
@@ -33,6 +33,7 @@ class DecisionTree:
 
     def fit(self):
         self.generate_desision_tree()
+        return self.tree
 
     def generate_desision_tree(self):
         attributes = copy.deepcopy(self.attributes)
@@ -50,7 +51,7 @@ class DecisionTree:
 
         # print(tree[max_key])
         tree = self.make_tree(data, attributes)
-        print("TrEee", json.dumps(tree, sort_keys=True, indent=4))
+
         self.tree = tree
         
 
@@ -187,7 +188,9 @@ class DecisionTree:
     def transform_list(self,list):
         result = []
         for attribute in list:
+            
             result.append(self.transform_attribute(attribute))
+            
         return result
 
 
@@ -195,21 +198,23 @@ class DecisionTree:
         result = []
         for attr in attributes:
             result.append(self.get_value(tree,attr))
-    
+
         return result
 
 
-    def get_value(self,tree,attribute):
-       
+    def get_value(self,tree,attribute):     
         if(isinstance(tree,int)):
             return tree
-        for attr in attribute:
-            key=attr['key']
-            value = attr['value']
-
-            if(key in tree):
-                result = tree[key][value]
+        else:
+            
+            for attr in attribute:
+                key=attr['key']
+                value = attr['value']
                 
+                if(key in tree):
+                    result = tree[key][value]
+                    
+  
                
         return self.get_value(result, attribute)
   
