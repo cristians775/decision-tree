@@ -228,7 +228,9 @@ test_data_metrics= calculate_metrics(arr_true_class_test_data, result_test_data)
 confusion_matrix = metrics.confusion_matrix(arr_true_class_test_data, result_test_data)
 
 cm_display = metrics.ConfusionMatrixDisplay(confusion_matrix = confusion_matrix, display_labels = [False, True])
+
 cm_display.plot()
+plt.title("RESULTADO DATOS DE PRUEBA")
 plt.ylabel('Clase resultado')
 plt.xlabel('Clase verdadera')
 plt.show()
@@ -244,6 +246,7 @@ confusion_matrix = metrics.confusion_matrix(arr_true_class_data, result_data_cla
 
 cm_display = metrics.ConfusionMatrixDisplay(confusion_matrix = confusion_matrix, display_labels = [False, True])
 cm_display.plot()
+plt.title("RESULTADO DATOS DE ENTRENAMIENTO")
 plt.ylabel('Clase resultado')
 plt.xlabel('Clase verdadera')
 plt.show()
@@ -267,6 +270,7 @@ confusion_matrix = metrics.confusion_matrix(arr_true_class_test_data, result_ran
 
 cm_display = metrics.ConfusionMatrixDisplay(confusion_matrix = confusion_matrix, display_labels = [False, True])
 cm_display.plot()
+plt.title("PUNTO F - RESULTADO DATOS DE PRUEBA")
 plt.ylabel('Clase resultado')
 plt.xlabel('Clase verdadera')
 plt.show()
@@ -283,6 +287,7 @@ confusion_matrix = metrics.confusion_matrix(arr_true_class_data, result_random_f
 
 cm_display = metrics.ConfusionMatrixDisplay(confusion_matrix = confusion_matrix, display_labels = [False, True])
 cm_display.plot()
+plt.title("PUNTO F - RESULTADO DATOS DE ENTRENAMIENTO")
 plt.ylabel('Clase resultado')
 plt.xlabel('Clase verdadera')
 plt.show()
